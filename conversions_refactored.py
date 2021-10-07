@@ -9,6 +9,10 @@ def convert(fromUnit, toUnit, value):
     fromUnit, toUnit = fromUnit.lower(), toUnit.lower() #make sure strings are lower case
 
     miles_yards = 1760.0
+    meters_meters = 1609.344
+    yards_meters = 1.094
+
+    if fromUnit == 'miles':
 
     # # converting miles to meters/yards
     # if fromUnit == 'miles':
@@ -38,6 +42,6 @@ def convert(fromUnit, toUnit, value):
     # else:
     #     converted_val = 0 #change to error
 
-    return float(converted_val)
+    #return float(converted_val)
 
 
