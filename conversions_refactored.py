@@ -1,47 +1,57 @@
 
-class TypeError(TypeError):
+class ConversionNotPossible(ValueError):
     pass
 
 
 def convert(fromUnit, toUnit, value):
     """takes a string as unit to be converted, another string as the unit to convert to and a float as the value of fto be converted."""
 
-    fromUnit, toUnit = fromUnit.lower(), toUnit.lower() #make sure strings are lower case
+    fromUnit, toUnit =  fromUnit.lower(), toUnit.lower() #make sure strings are lower case
 
+    converted_val = 0.0
+    error_message = f"Can't convert {fromUnit} to {toUnit}" ##put this in class?
     miles_yards = 1760.0
-    meters_meters = 1609.344
+    miles_meters = 1609.344
     yards_meters = 1.094
 
-    if fromUnit == 'miles':
+    if fromUnit == toUnit:
+        converted_val = value
 
-    # # converting miles to meters/yards
-    # if fromUnit == 'miles':
-    #     if toUnit == 'yards':
-    #         converted_val = round(value * 1760.0, 2)
-    #     elif toUnit == 'meters':
-    #         converted_val = round(value * 1609.344, 2)
-    #     # else:
-    #     #     raise TypeError(f"can't convert {fromUnit} to {toUnit}")
+    # converting miles to meters/yards
+    elif fromUnit == 'miles':
+        if toUnit == 'yards':
+            converted_val = value * miles_yards
+        elif toUnit == 'meters':
+            converted_val = value * miles_meters
+        else:
+            raise ConversionNotPossible(error_message)
 
+    # converting yards to miles/meters
+    elif fromUnit == 'yards':
+        if toUnit == 'miles':
+            converted_val = value / miles_yards
+        elif toUnit == 'meters':
+            converted_val = value / yards_meters
+        else:
+            raise ConversionNotPossible(error_message)
 
-    # # converting yards to miles/meters
-    # elif fromUnit == 'yards':
-    #     if toUnit == 'miles':
-    #         converted_val = round(value / 1760.0, 2)
-    #     elif toUnit == 'meters':
-    #         converted_val = round(value / 1.094, 2)
-
-
-    # # # converting meters to miles/yards
-    # elif fromUnit == 'meters':
-    #     if toUnit == 'miles':
-    #         converted_val = round(value / 1609.344, 2)
-    #     elif toUnit == 'yards':
-    #         converted_val = round(value * 1.094, 2)
+    # # converting meters to miles/yards
+    elif fromUnit == 'meters':
+        if toUnit == 'miles':
+            converted_val = value / miles_meters
+        elif toUnit == 'yards':
+            converted_val = value * yards_meters
+        else:
+            raise ConversionNotPossible(error_message)
     
-    # else:
-    #     converted_val = 0 #change to error
+    else:
+        raise ConversionNotPossible(error_message)
 
-    #return float(converted_val)
 
+    converted_val = round(converted_val, 2)
+
+    return converted_val
+
+
+# print(convert('miles', 'kelvin', 200))
 
