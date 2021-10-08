@@ -10,18 +10,21 @@ def convert(fromUnit, toUnit, value):
 
     converted_val = 0.0
     error_message = f"Can't convert {fromUnit} to {toUnit}" ##put this in class?
-    miles_yards = 1760.0
-    miles_meters = 1609.344
-    yards_meters = 1.094
+    m_y = 1760.0
+    m_m = 1609.344
+    y_m = 1.094
+
+    equations = {
+        'm_y' : lambda a,b : a * b
+    }
 
     if fromUnit == toUnit:
         converted_val = value
 
     # converting miles to meters/yards
-    elif fromUnit == 'miles':
-        if toUnit == 'yards':
-            converted_val = value * miles_yards
-        elif toUnit == 'meters':
+    elif (fromUnit == 'miles' and if toUnit == 'yards'):
+            converted_val = equations['m_y'](value, m_y)           
+    elif toUnit == {fromUnit == 'miles' and if toUnit == 'meters'}:
             converted_val = value * miles_meters
         else:
             raise ConversionNotPossible(error_message)
@@ -54,4 +57,5 @@ def convert(fromUnit, toUnit, value):
 
 
 # print(convert('miles', 'kelvin', 200))
+
 
