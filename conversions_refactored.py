@@ -4,7 +4,7 @@ class ConversionNotPossible(ValueError):
 
 
 def convert(fromUnit, toUnit, value):
-    """takes a string as unit to be converted, another string as the unit to convert to and a float as the value of fto be converted."""
+    """takes a string as unit to be converted, another string as the unit to convert to and a float as the value to be converted."""
 
     fromUnit, toUnit =  fromUnit.lower(), toUnit.lower() #make sure strings are lower case
 
