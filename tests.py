@@ -11,21 +11,21 @@ class TestRefactoredMethod(unittest.TestCase):
 
     units = ['miles', 'yards', 'meters', 'farenheit', 'celsius', 'kelvin']
 
-    #converting celsius 
+    #testing celsius conversion
     def test_convertCelsiusToKelvin(self):
         self.assertEqual(convert('celsius', 'kelvin', 30), 303.15)
 
     def test_convertCelsiusToFarenheit(self):
         self.assertEqual(convert('celsius', 'farenheit', 30), 86.0)
 
-    #converting farenheit
+    #testing farenheit conversion
     def test_convertFarenheitoKelvin(self):
         self.assertEqual(convert('farenheit', 'kelvin', 50), 283.15)
 
     def test_convertFarenheitoCelsius(self):
         self.assertEqual(convert('farenheit', 'celsius', 50), 10)
         
-    #converting kelvin
+    #testing kelvin conversion
     def test_convertKelvintoFarenheit(self):
         self.assertEqual(convert('kelvin', 'farenheit', 300), 80.33)
 

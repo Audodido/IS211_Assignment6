@@ -9,7 +9,6 @@ def convert(fromUnit, toUnit, value):
     fromUnit, toUnit =  fromUnit.lower(), toUnit.lower() #make sure strings are lower case
 
     converted_val = 0.0
-    # error_message = f"Can't convert {fromUnit} to {toUnit}" ##put this in class?
     
     # important values for conversion equations
     c_k = 273.15
