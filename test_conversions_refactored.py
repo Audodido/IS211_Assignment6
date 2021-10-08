@@ -22,9 +22,16 @@ class TestRefactoredMethod(unittest.TestCase):
     def test_convertFarenheitoKelvin(self):
         self.assertEqual(convert('farenheit', 'kelvin', 50), 283.15)
 
-    def test_convertFarenheitoKelvin(self):
+    def test_convertFarenheitoCelsius(self):
         self.assertEqual(convert('farenheit', 'celsius', 50), 10)
         
+    #converting kelvin
+    def test_convertKelvintoFarenheit(self):
+        self.assertEqual(convert('kelvin', 'farenheit', 300), 80.33)
+
+    def test_convertKelvintoCelsius(self):
+        self.assertEqual(convert('kelvin', 'celsius', 300), 26.85)
+
     # testing miles conversion
     def test_ConvertMilesToYards(self):
         self.assertEqual(convert('miles', 'yards', 2.0), 3520.0)

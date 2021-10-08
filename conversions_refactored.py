@@ -9,7 +9,7 @@ def convert(fromUnit, toUnit, value):
     fromUnit, toUnit =  fromUnit.lower(), toUnit.lower() #make sure strings are lower case
 
     converted_val = 0.0
-    error_message = f"Can't convert {fromUnit} to {toUnit}" ##put this in class?
+    # error_message = f"Can't convert {fromUnit} to {toUnit}" ##put this in class?
     
     # important values for conversion equations
     c_k = 273.15
@@ -17,6 +17,7 @@ def convert(fromUnit, toUnit, value):
     f_k1, f_k2 = 459.67, 5/9
     f_c1, f_c2 = 32, 5/9
     k_f1, k_f2 = 9/5, 459.67
+    k_c = 273.15
     m_y = 1760.0
     m_m = 1609.344
     y_m = 1.094
@@ -27,6 +28,8 @@ def convert(fromUnit, toUnit, value):
         ('celsius', 'farenheit') : lambda a : a * c_f1 + c_f2,
         ('farenheit', 'kelvin') : lambda a : (a + f_k1) * f_k2,
         ('farenheit', 'celsius') : lambda a : (a - f_c1) * f_c2,
+        ('kelvin', 'farenheit') : lambda a : a * k_f1 - k_f2,
+        ('kelvin', 'celsius') : lambda a : a - k_c,
         ('miles', 'yards') : lambda a : a * m_y,
         ('miles', 'meters') : lambda a : a * m_m,
         ('yards', 'miles') : lambda a : a / m_y,
@@ -44,5 +47,5 @@ def convert(fromUnit, toUnit, value):
             converted_val = round(the_math[fromUnit, toUnit](value), 2)
             return converted_val
         except:
-            raise ConversionNotPossible(error_message)
+            raise ConversionNotPossible(f"Can't convert {fromUnit} to {toUnit}")
 
