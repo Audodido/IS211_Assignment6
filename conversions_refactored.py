@@ -46,16 +46,3 @@ def convert(fromUnit, toUnit, value):
         except:
             raise ConversionNotPossible(error_message)
 
-
-
-
-    
-    # else:
-    #     raise ConversionNotPossible(error_message)
-
-
-
-
-# print(convert('miles', 'kelvin', 200))
-
-
